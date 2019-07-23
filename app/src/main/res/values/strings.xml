@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Kotlin Playbook Android</string>
+    <string name="title_activity_maps">Kotlin Playbook Android - Map</string>
+</resources>
