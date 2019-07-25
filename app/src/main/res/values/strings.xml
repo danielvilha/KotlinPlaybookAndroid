@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Kotlin Playbook Android</string>
     <string name="title_activity_maps">Kotlin Playbook Android - Map</string>
+    <string name="enter">Enter</string>
+    <string name="number_of_comments">Number of comments:</string>
+    <string name="number">00</string>
 </resources>
