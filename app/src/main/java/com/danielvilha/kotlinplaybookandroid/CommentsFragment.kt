@@ -21,9 +21,10 @@ import kotlinx.android.synthetic.main.fragment_comments.*
  */
 class CommentsFragment : Fragment() {
 
-    private var id: String? = null
     private var adapter = GroupAdapter<ViewHolder>()
+    private var id: String? = null
 
+    //<editor-fold desc="onCreate">
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,15 +32,19 @@ class CommentsFragment : Fragment() {
             id = arguments?.getString(ID)
         }
     }
+    //</editor-fold>
 
+    //<editor-fold desc="onCreateView">
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_comments, container, false)
     }
+    //</editor-fold>
 
+    //<editor-fold desc="onViewCreated">
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.title = "Comments"
+//        (activity as MapsActivity).setActionBarTitle(resources.getString(R.string.title_fragment_comments))
 
         val service = ApiFactory.api
 
@@ -63,17 +68,20 @@ class CommentsFragment : Fragment() {
 
         recycler.adapter = adapter
     }
+    //</editor-fold>
 
     companion object {
-        private const val TAG = "CommentsFragment"
+        private val TAG = CommentsFragment::class.java.name.toString()
         private const val ID = "ID"
 
         @JvmStatic
+        //<editor-fold desc="arguments">
         fun arguments(id: String) =
             CommentsFragment().apply {
                 arguments = Bundle().apply {
                     putString(ID, id)
                 }
             }
+        //</editor-fold>
     }
 }

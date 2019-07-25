@@ -32,16 +32,16 @@ dependencies {
     def okhttp3_logging_version = '3.11.0'
     def kotlin_coroutine_version = '1.0.1'
     def picasso_version = '2.71828'
-
     def constraintlayout_version = '1.1.3'
     def legacy_version = '1.0.0'
-    def navigation_version = "2.0.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appcompat_and_core_version"
     implementation "androidx.core:core-ktx:$appcompat_and_core_version"
+    implementation "androidx.legacy:legacy-support-v4:$legacy_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "com.google.android.material:material:$legacy_version"
 
     // Google maps
     implementation "com.google.android.gms:play-services-maps:$google_maps_version"

@@ -22,9 +22,10 @@ import kotlinx.android.synthetic.main.fragment_posts.*
  */
 class PostsFragment : Fragment() {
 
-    private var id: String? = null
     private var adapter = GroupAdapter<ViewHolder>()
+    private var id: String? = null
 
+    //<editor-fold desc="onCreate">
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,15 +33,19 @@ class PostsFragment : Fragment() {
             id = arguments?.getString(ID)
         }
     }
+    //</editor-fold>
 
+    //<editor-fold desc="onCreateView">
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_posts, container, false)
     }
+    //</editor-fold>
 
+    //<editor-fold desc="onViewCreated">
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.title = "Posts"
+//        (activity as MapsActivity).setActionBarTitle(resources.getString(R.string.title_fragment_posts))
 
         val service = ApiFactory.api
 
@@ -60,6 +65,7 @@ class PostsFragment : Fragment() {
                         Log.d(TAG, "Clicked item: ${post.id}")
                         activity?.supportFragmentManager?.beginTransaction()
                             ?.add(R.id.container, CommentsFragment.arguments(post.id.absoluteValue.toString()))
+                            ?.addToBackStack(PostsFragment::class.java.name)
                             ?.commit()
                     }
                 } else {
@@ -72,17 +78,20 @@ class PostsFragment : Fragment() {
 
         recycler.adapter = adapter
     }
+    //</editor-fold>
 
     companion object {
         private val TAG = PostsFragment::class.java.name.toString()
         private const val ID = "ID"
 
         @JvmStatic
+        //<editor-fold desc="arguments">
         fun arguments(id: String) =
             PostsFragment().apply {
                 arguments = Bundle().apply {
                     putString(ID, id)
                 }
             }
+        //</editor-fold>
     }
 }

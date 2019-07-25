@@ -11,12 +11,10 @@ import retrofit2.converter.moshi.MoshiConverterFactory
  */
 object RetrofitFactory {
 
-    var url = "http://jsonplaceholder.typicode.com/"
-
-    fun retrofit(url: String) : Retrofit = Retrofit.Builder()
+    fun retrofit() : Retrofit = Retrofit.Builder()
         .client(OkHttpClient().newBuilder().build())
-        .baseUrl(url)
-//        .addConverterFactory(MoshiConverterFactory.create())
+        .baseUrl("http://jsonplaceholder.typicode.com/")
+        .addConverterFactory(MoshiConverterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()

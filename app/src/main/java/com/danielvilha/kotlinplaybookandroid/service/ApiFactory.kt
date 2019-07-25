@@ -5,5 +5,5 @@ package com.danielvilha.kotlinplaybookandroid.service
  */
 object ApiFactory {
 
-    val api: Service = RetrofitFactory.retrofit(RetrofitFactory.url).create(Service::class.java)
+    val api: Service = RetrofitFactory.retrofit().create(Service::class.java)
 }
