@@ -21,8 +21,8 @@ import kotlinx.android.synthetic.main.fragment_comments.*
  */
 class CommentsFragment : Fragment() {
 
-    private var adapter = GroupAdapter<ViewHolder>()
     private var id: String? = null
+    private var adapter = GroupAdapter<ViewHolder>()
 
     //<editor-fold desc="onCreate">
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,8 +71,8 @@ class CommentsFragment : Fragment() {
     //</editor-fold>
 
     companion object {
-        private val TAG = CommentsFragment::class.java.name.toString()
         private const val ID = "ID"
+        private val TAG = CommentsFragment::class.java.name.toString()
 
         @JvmStatic
         //<editor-fold desc="arguments">

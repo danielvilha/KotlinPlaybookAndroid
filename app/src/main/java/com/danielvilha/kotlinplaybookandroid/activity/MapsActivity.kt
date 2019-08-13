@@ -25,9 +25,9 @@ import kotlinx.coroutines.launch
  */
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
-    private var activity: MapsActivity? = null
-    private var users: List<User>? = null
     private lateinit var mMap: GoogleMap
+    private var users: List<User>? = null
+    private var activity: MapsActivity? = null
 
     //<editor-fold desc="onCreate">
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +59,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
         Log.d(TAG, "Marker Click: ${user?.name}")
 
         supportFragmentManager.beginTransaction()
-            .add(R.id.container, PostsFragment.arguments(user?.id.toString()))
+            .replace(R.id.container, PostsFragment.arguments(user?.id.toString()), PostsFragment::class.java.simpleName)
             .addToBackStack(MapsActivity::class.java.name)
             .commit()
     }
@@ -108,10 +108,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
     //</editor-fold>
 
     //<editor-fold desc="getUser">
-    private fun getUser(marker: Marker?) : User? {
-        for (usr in users!!) {
-            if (marker?.position?.latitude == usr.address.geo.lat.toDouble() && marker.position.longitude == usr.address.geo.lng.toDouble()) {
-                return usr
+    private fun getUser(marker: Marker?): User? {
+        users?.forEach { user ->
+            if (marker?.position?.latitude == user.address.geo.lat.toDouble() && marker.position.longitude == user.address.geo.lng.toDouble()) {
+                return user
             }
         }
 

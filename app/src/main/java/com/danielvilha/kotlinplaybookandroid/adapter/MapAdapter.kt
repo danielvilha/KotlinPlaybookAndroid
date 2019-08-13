@@ -25,9 +25,12 @@ class MapAdapter(private val context: Context?, private val users: List<User>): 
     override fun getInfoContents(marker: Marker?): View {
         val view = (context as AppCompatActivity).layoutInflater.inflate(R.layout.row_user, null)
         val user: User? = getUser(marker)
+        val url = "https://api.adorable.io/avatars/mouth11.png"// + list.random()
 
         val image = view.findViewById<ImageView>(R.id.image)
-        Picasso.get().load("https://api.adorable.io/avatars/" + list.random()).into(image)
+        Picasso.get().load(url)
+            .placeholder(R.mipmap.ic_launcher)
+            .into(image)
 
         val tvName = view.findViewById<TextView>(R.id.name)
         val tvEmail = view.findViewById<TextView>(R.id.email)
@@ -43,7 +46,7 @@ class MapAdapter(private val context: Context?, private val users: List<User>): 
         tvCompany.text = user?.company?.name
         tvAddress.text = String.format("${user?.address?.street} ${user?.address?.suite} - ${user?.address?.city}, ${user?.address?.zipcode}")
 
-        Log.d("MapAdapter", "User id: ${user?.id}")
+        Log.d(javaClass.simpleName, "User id: ${user?.id}")
 
         return view
     }
@@ -53,14 +56,12 @@ class MapAdapter(private val context: Context?, private val users: List<User>): 
     }
 
     private fun getUser(marker: Marker?) : User? {
-        var user: User? = null
-
-        for (usr in users) {
-            if (marker?.position?.latitude == usr.address.geo.lat.toDouble() && marker.position.longitude == usr.address.geo.lng.toDouble()) {
-                user = usr
+        users.forEach { user ->
+            if (marker?.position?.latitude == user.address.geo.lat.toDouble() && marker.position.longitude == user.address.geo.lng.toDouble()) {
+                return user
             }
         }
 
-        return user
+        return null
     }
 }

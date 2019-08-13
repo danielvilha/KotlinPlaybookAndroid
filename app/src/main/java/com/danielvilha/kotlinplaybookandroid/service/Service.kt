@@ -13,6 +13,9 @@ import retrofit2.http.Query
  */
 interface Service {
 
+    @GET("users/")
+    fun getUser(@Query("id") id: String): Deferred<Response<List<User>>>
+
     @GET("users")
     fun getUsers(): Deferred<Response<List<User>>>
 
