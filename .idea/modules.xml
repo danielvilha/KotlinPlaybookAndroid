@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/KotlinPlaybookAndroid.iml" filepath="$PROJECT_DIR$/KotlinPlaybookAndroid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="kotlin-playbook-android/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-playbook-android.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-playbook-android.iml" group="kotlin-playbook-android" />
     </modules>
   </component>
 </project>

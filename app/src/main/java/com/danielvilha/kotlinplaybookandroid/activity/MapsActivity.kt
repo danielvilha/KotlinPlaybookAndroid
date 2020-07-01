@@ -126,6 +126,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
     //</editor-fold>
 
     companion object {
-        private val TAG = MapsActivity::class.java.name.toString()
+        private val TAG = MapsActivity::class.java.name
     }
 }
